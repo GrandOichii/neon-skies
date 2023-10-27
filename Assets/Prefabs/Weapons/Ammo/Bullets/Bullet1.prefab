@@ -101,8 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   body: {fileID: 2851427962631080322}
-  dissapearAfter: 2
-  baseDeviation: 30
+  dissapearAfter: 0.7
 --- !u!50 &2851427962631080322
 Rigidbody2D:
   serializedVersion: 4

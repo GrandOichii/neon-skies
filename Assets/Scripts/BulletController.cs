@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
     #region Serialized
 
     public float speed;
+    public int damage = 1;
     public Rigidbody2D body;
     public float dissapearAfter;
 
@@ -27,7 +28,6 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(transform.up);
         body.MovePosition(transform.position + speed * Time.fixedDeltaTime * transform.up);
     }
 
@@ -38,7 +38,7 @@ public class BulletController : MonoBehaviour
         }
         if (collider.gameObject.CompareTag("damageable")) {
             Destroy(gameObject);
-            collider.GetComponent<Health>().Value--;
+            collider.GetComponent<Health>().Value -= damage;
             return;
         }
     }
