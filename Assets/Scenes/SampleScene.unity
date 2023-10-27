@@ -592,6 +592,9 @@ MonoBehaviour:
   muzzlePoint: {fileID: 1918608222}
   bulletTemplate: {fileID: 7933578759947254077, guid: 69fc2f095ac45654cb7887826fbff091, type: 3}
   sprite: {fileID: 1808327810}
+  maxDeviation: 20
+  deviationDecreaseInterval: 0.1
+  deviationPerBullet: 0.2
 --- !u!114 &1015195586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,7 +956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918608222}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.144, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
