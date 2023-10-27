@@ -25,4 +25,12 @@ public class PlayerAbilityController : MonoBehaviour
             }
         }
     }
+
+    public void OnDashStarted() {
+        print("Dash started");
+    }
+
+    public void OnDashEnded() {
+        print("Dash ended");
+    }
 }
