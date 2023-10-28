@@ -34,6 +34,16 @@ public class ReloadMeterController : MonoBehaviour
     #endregion
 
     private Gun _current;
+    private Gun Current {
+        get => _current;
+        set {
+            _current = value;
+            var mbHeight = progressBar.rectTransform.rect.height;
+
+            hotBar.rectTransform.offsetMax = new (hotBar.rectTransform.offsetMax.x, -mbHeight * (_current.reloadTime - _current.hotReloadIntervalEnd) / _current.reloadTime);
+            hotBar.rectTransform.offsetMin = new (hotBar.rectTransform.offsetMin.x, mbHeight * _current.hotReloadIntervalStart / _current.reloadTime);
+        }
+    }
 
     private ReloadType _rt = ReloadType.NONE;
     public ReloadType ReloadType {
@@ -43,11 +53,6 @@ public class ReloadMeterController : MonoBehaviour
 
             switch (_rt) {
             case ReloadType.NORMAL:
-                var mbHeight = progressBar.rectTransform.rect.height;
-
-                hotBar.rectTransform.offsetMax = new (hotBar.rectTransform.offsetMax.x, -mbHeight * (_current.reloadTime - _current.hotReloadIntervalEnd) / _current.reloadTime);
-                hotBar.rectTransform.offsetMin = new (hotBar.rectTransform.offsetMin.x, mbHeight * _current.hotReloadIntervalStart / _current.reloadTime);
-                
                 hotBar.color = HotReloadZoneColor;
                 hotBar.gameObject.SetActive(true);
                 break;
@@ -72,7 +77,7 @@ public class ReloadMeterController : MonoBehaviour
     }
 
     public void OnGunEquipped(Object gun) {
-        _current = gun as Gun;
+        Current = gun as Gun;
     }
 
     public void Start() {
@@ -89,7 +94,7 @@ public class ReloadMeterController : MonoBehaviour
         progressBar.transform.localPosition = new(progressBar.transform.localPosition.x, 0, progressBar.transform.localPosition.z);
         // progressBar.transform.localPosition -= Vector3.down * height;
         
-        LeanTween.moveLocalY(progressBar.gameObject,-height, _current.ejectTime).setOnComplete(() => {
+        LeanTween.moveLocalY(progressBar.gameObject,-height, Current.ejectTime).setOnComplete(() => {
             _hide();
             Ejected.Invoke();
         });
@@ -119,7 +124,7 @@ public class ReloadMeterController : MonoBehaviour
 
         ReloadType = ReloadType.NORMAL;
         
-        _reloadTween = LeanTween.moveLocalY(progressBar.gameObject, 0, _current.reloadTime).setOnComplete(() => {
+        _reloadTween = LeanTween.moveLocalY(progressBar.gameObject, 0, Current.reloadTime).setOnComplete(() => {
             _endReload();
         });
     }
