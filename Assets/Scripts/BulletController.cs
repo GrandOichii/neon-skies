@@ -32,14 +32,16 @@ public class BulletController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.CompareTag("wall")) {
-            Destroy(gameObject);
-            return;
+        // if (collider.gameObject.CompareTag("wall")) {
+        //     Destroy(gameObject);
+        //     return;
+        // }
+
+        if (collider.TryGetComponent(out Health health)) {
+            health.Value -= damage;
+
         }
-        if (collider.gameObject.CompareTag("damageable")) {
-            Destroy(gameObject);
-            collider.GetComponent<Health>().Value -= damage;
-            return;
-        }
+
+        Destroy(gameObject);
     }
 }
