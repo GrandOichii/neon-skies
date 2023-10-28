@@ -926,6 +926,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1015195580}
+  - component: {fileID: 1015195590}
   - component: {fileID: 1015195588}
   - component: {fileID: 1015195587}
   - component: {fileID: 1015195582}
@@ -1210,6 +1211,31 @@ MonoBehaviour:
       m_Calls: []
   amount: 1
   healtAfter: 0
+--- !u!114 &1015195590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015195579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761ea0838c7d8ce4a8ad141e11d84e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityMappings:
+  - key: dash
+    ability: {fileID: 1015195587}
+  implantSlots:
+  - name: legs
+    slot: 4
+    _implant: {fileID: 11400000, guid: b7a5fefc10aaeb84da42a614a1f48b68, type: 2}
+  ImplantUneqiupped:
+    m_PersistentCalls:
+      m_Calls: []
+  ImplantEquipped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1263083986
 GameObject:
   m_ObjectHideFlags: 0

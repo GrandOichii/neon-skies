@@ -9,10 +9,22 @@ public class Ability : MonoBehaviour {
 
     #endregion
 
+    private int _activeCounter;
+    public int ActiveCounter {
+        get => _activeCounter;
+        set {
+            _activeCounter = value;
+            // shouldn't happen
+            if (_activeCounter < 0) _activeCounter = 0;
+        }
+    }
+    public bool CanActivate => ActiveCounter > 0;
+
 
     private bool _active = false;
     public void Do() {
-        if (_active) return;
+        // TODO don't know if this should be here or in the implant controller
+        if (!CanActivate || _active) return;
 
         _active = true;
         StartAbility();
