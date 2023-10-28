@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Movement))]
-public class Dash : Ability
+public class Dash : ActivatedAbility
 {
     #region Serialized
     

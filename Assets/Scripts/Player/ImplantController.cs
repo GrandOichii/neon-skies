@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class AbilityMapping {
     public string key;
+    // TODO change
     public Ability ability;
 }
 
@@ -13,6 +14,8 @@ public class AbilityMapping {
 public class ImplantSlotContainer {
     public string name;
     public ImplantSlot slot;
+
+    #nullable enable
     [SerializeField] Implant? _implant;
     public Implant? Implant {
         get => _implant;
@@ -20,6 +23,7 @@ public class ImplantSlotContainer {
             _implant = value;
         }
     }
+    #nullable disable
 
 }
 
@@ -42,7 +46,7 @@ public class ImplantController : MonoBehaviour
 
     private Dictionary<string, ImplantSlotContainer> _slotMap;
 
-    void Awake() {
+    void Start() {
         _abilityMap = new();
         foreach (var mapping in abilityMappings) {
             _abilityMap.Add(mapping.key, mapping.ability);

@@ -162,8 +162,6 @@ public class PlayerFire : MonoBehaviour
         _loaded = true;
         MagazineAmmoCount = System.Math.Min(Gun.magazineSize, TotalAmmoCount);
         TotalAmmoCount -= MagazineAmmoCount;
-
-        print("RELOADED: " + rt);
     }
 
 }

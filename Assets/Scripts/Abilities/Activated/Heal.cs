@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class Heal : Ability
+public class Heal : ActivatedAbility
 {
     #region Serialized
 

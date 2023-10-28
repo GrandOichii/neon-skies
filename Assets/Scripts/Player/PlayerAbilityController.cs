@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class AbilityKeyBinding {
+public class ActivatedAbilityKeyBinding {
     public KeyCode key;
-    public Ability ability;
+    public ActivatedAbility ability;
 } 
 
 public class PlayerAbilityController : MonoBehaviour
 {
     #region Serialized
 
-    public List<AbilityKeyBinding> abilityKeyBindings;
+    public List<ActivatedAbilityKeyBinding> abilityKeyBindings;
     
     #endregion
 

@@ -931,8 +931,9 @@ GameObject:
   - component: {fileID: 1015195587}
   - component: {fileID: 1015195582}
   - component: {fileID: 1015195585}
-  - component: {fileID: 1015195586}
   - component: {fileID: 1015195589}
+  - component: {fileID: 1015195591}
+  - component: {fileID: 1015195586}
   - component: {fileID: 1015195581}
   - component: {fileID: 1015195584}
   m_Layer: 6
@@ -1110,7 +1111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265527eeeb1db2544bf76ce6cc5ed454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialValue: 1
+  initialValue: 5
   maxValue: 5
   Changed:
     m_PersistentCalls:
@@ -1118,6 +1119,21 @@ MonoBehaviour:
       - m_Target: {fileID: 79919639}
         m_TargetAssemblyTypeName: HealthDisplayController, Assembly-CSharp
         m_MethodName: OnHealthChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  MaxChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 79919639}
+        m_TargetAssemblyTypeName: HealthDisplayController, Assembly-CSharp
+        m_MethodName: OnMaxHealthChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1142,6 +1158,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769d7695a3422b3438f48a9d1bc9ebf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated:
+    m_PersistentCalls:
+      m_Calls: []
+  deactivated:
+    m_PersistentCalls:
+      m_Calls: []
   AbilityStarted:
     m_PersistentCalls:
       m_Calls:
@@ -1203,6 +1225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d01487260f41f54f9157ad20e008de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated:
+    m_PersistentCalls:
+      m_Calls: []
+  deactivated:
+    m_PersistentCalls:
+      m_Calls: []
   AbilityStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -1226,16 +1254,42 @@ MonoBehaviour:
   abilityMappings:
   - key: dash
     ability: {fileID: 1015195587}
+  - key: heal
+    ability: {fileID: 1015195589}
+  - key: max-health-increase
+    ability: {fileID: 1015195591}
   implantSlots:
   - name: legs
     slot: 4
     _implant: {fileID: 11400000, guid: b7a5fefc10aaeb84da42a614a1f48b68, type: 2}
+  - name: torso
+    slot: 1
+    _implant: {fileID: 11400000, guid: d0e75d572617d8a48b8338aade0f728c, type: 2}
   ImplantUneqiupped:
     m_PersistentCalls:
       m_Calls: []
   ImplantEquipped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1015195591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015195579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa56a089f992824e986eab395b08bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activated:
+    m_PersistentCalls:
+      m_Calls: []
+  deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  increaseBy: 1
 --- !u!1 &1263083986
 GameObject:
   m_ObjectHideFlags: 0

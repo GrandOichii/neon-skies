@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     #region Events
 
     public UnityEvent<int> Changed;
+    public UnityEvent<int> MaxChanged;
     public UnityEvent ReachedZero;
 
     #endregion
@@ -25,7 +26,7 @@ public class Health : MonoBehaviour
         get => _value;
         set {
             _value = value;
-            if (_value > maxValue) _value = maxValue;
+            if (_value > MaxValue) _value = MaxValue;
             if (_value <= 0) {
                 _value = 0;
                 ReachedZero?.Invoke();
@@ -34,7 +35,23 @@ public class Health : MonoBehaviour
         }
     }
 
+    private int _maxValue;
+    public int MaxValue {
+        get => _maxValue;
+        set {
+            var diff = value - _maxValue;
+            _maxValue = value;
+            if (_value > _maxValue) _value = _maxValue;
+            if (diff > 0) {
+                Value += diff;
+            }
+
+            MaxChanged?.Invoke(_value);
+        }
+    }
+
     void Awake() {
+        MaxValue = maxValue;
         Value = initialValue;
     }
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c63a0b2a53f498448ff655f61f11217, type: 3}
-  m_Name: Implant1
+  m_Name: Dash1
   m_EditorClassIdentifier: 
-  name: Implant1
-  description: 'First implant.
+  name: Dash1
+  description: 'First generational implant.
 
-    Enhaces user''s legs, giving them the ability
-    to dash.'
+    Enhaces user''s legs, giving them
+    the ability to dash.'
   slot: 4
   enables:
   - dash
