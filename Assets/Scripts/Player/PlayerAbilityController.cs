@@ -20,7 +20,7 @@ public class PlayerAbilityController : MonoBehaviour
     {
         foreach (var pair in abilityKeyBindings) {
             if (Input.GetKeyDown(pair.key)) {
-                pair.ability.Do(this);
+                pair.ability.Do();
                 return;
             }
         }

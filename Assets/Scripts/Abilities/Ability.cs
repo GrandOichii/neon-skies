@@ -11,13 +11,13 @@ public class Ability : MonoBehaviour {
 
 
     private bool _active = false;
-    public void Do(Object o) {
+    public void Do() {
         if (_active) return;
 
         _active = true;
-        StartAbility(o);
+        StartAbility();
     }
-    public virtual void StartAbility(UnityEngine.Object o) {
+    public virtual void StartAbility() {
         AbilityStarted?.Invoke();
     }
     public virtual void EndAbility() {

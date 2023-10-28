@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Movement))]
 public class Dash : Ability
 {
     #region Serialized
@@ -13,9 +14,9 @@ public class Dash : Ability
 
     #endregion
     
-    public override void StartAbility(UnityEngine.Object o) {
-        base.StartAbility(o);
-        var m = o.GetComponent<Movement>();
+    public override void StartAbility() {
+        base.StartAbility();
+        var m = GetComponent<Movement>();
         var baseSpeed = m.moveSpeed;
         m.moveSpeed += speedMod;
         StartCoroutine(_end(m, baseSpeed));

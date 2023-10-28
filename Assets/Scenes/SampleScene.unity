@@ -931,6 +931,7 @@ GameObject:
   - component: {fileID: 1015195582}
   - component: {fileID: 1015195585}
   - component: {fileID: 1015195586}
+  - component: {fileID: 1015195589}
   - component: {fileID: 1015195581}
   - component: {fileID: 1015195584}
   m_Layer: 6
@@ -1108,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265527eeeb1db2544bf76ce6cc5ed454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialValue: 5
+  initialValue: 1
   maxValue: 5
   Changed:
     m_PersistentCalls:
@@ -1187,6 +1188,28 @@ MonoBehaviour:
   abilityKeyBindings:
   - key: 304
     ability: {fileID: 1015195587}
+  - key: 101
+    ability: {fileID: 1015195589}
+--- !u!114 &1015195589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015195579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d01487260f41f54f9157ad20e008de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  AbilityEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  amount: 1
+  healtAfter: 0
 --- !u!1 &1263083986
 GameObject:
   m_ObjectHideFlags: 0
