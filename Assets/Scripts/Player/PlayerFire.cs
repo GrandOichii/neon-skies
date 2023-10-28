@@ -144,22 +144,26 @@ public class PlayerFire : MonoBehaviour
             reloadMeter.Eject();
             return;
         }
-        
 
-        /*
-        if loaded:
-            eject magazine
-        if not loaded:
-            if is inserting magazine:
-                try to hot reload
-            
-            insert magazine
-        */
+        if (TotalAmmoCount <= 0) {
+            return;
+        }
+
+        // loaded
+        reloadMeter.Reload();
     }
 
     public void OnEjected() {
         _canAdvanceReload = true;
         _loaded = false;
+    }
+
+    public void OnReloaded(ReloadType rt) {
+        _loaded = true;
+        MagazineAmmoCount = System.Math.Min(Gun.magazineSize, TotalAmmoCount);
+        TotalAmmoCount -= MagazineAmmoCount;
+
+        print("RELOADED: " + rt);
     }
 
 }

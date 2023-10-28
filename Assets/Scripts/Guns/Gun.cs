@@ -16,4 +16,6 @@ public class Gun : ScriptableObject
 
     public float ejectTime;
     public float reloadTime;
+    public float hotReloadIntervalStart;
+    public float hotReloadIntervalEnd;
 }
