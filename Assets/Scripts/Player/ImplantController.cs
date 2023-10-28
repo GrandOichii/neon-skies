@@ -80,5 +80,7 @@ public class ImplantController : MonoBehaviour
             ++ability.ActiveCounter;
         }
         ImplantEquipped.Invoke(name, implant);
+
+        // gameObject.AddComponent()
     }
 }
