@@ -14,6 +14,7 @@ public class HeatManager : MonoBehaviour
     #region Serialized
 
     public float initialHeatThresh;
+    public float maxHeat = -1;
     public float reduceHeatInterval;
     public float reduceHeatBy;    
     public int damageOnOverheat;
@@ -40,6 +41,9 @@ public class HeatManager : MonoBehaviour
             }
 
             _heat = value;
+            if (maxHeat > 0 && _heat > maxHeat) {
+                _heat = maxHeat;
+            }
             heatChanged.Invoke(_heat);
         }
     }
