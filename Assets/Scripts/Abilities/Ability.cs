@@ -51,6 +51,11 @@ public class StaticAbility : Ability {
 }
 
 public class ActivatedAbility : StaticAbility {
+    #region Serialized
+
+
+    #endregion
+
     #region Events
 
     public UnityEvent AbilityStarted;
