@@ -6,7 +6,6 @@ using UnityEngine.Events;
 [System.Serializable]
 public class AbilityMapping {
     public string key;
-    // TODO change
     public Ability ability;
 }
 
@@ -37,6 +36,7 @@ public class ImplantController : MonoBehaviour
     #endregion
     #region Events
 
+    // TODO fix
     public UnityEvent<string, Object> ImplantUneqiupped;
     public UnityEvent<string, Object> ImplantEquipped;
     public UnityEvent SlotMapInitiated;
@@ -56,29 +56,38 @@ public class ImplantController : MonoBehaviour
         SlotMap = new();
         foreach (var slot in implantSlots) {
             SlotMap.Add(slot.name, slot);
+            if (slot.Implant == null) continue;
             Install(slot.name, slot.Implant);
         }
 
-        SlotMapInitiated.Invoke();
+        SlotMapInitiated?.Invoke();
     }
 
-    public void Install(string name, Implant implant) {
+    public void Uninstall(string name) {
         var slot = SlotMap[name];
 
         var prev = slot.Implant;
-
+        if (prev == null) {
+            return;
+        }
         // disable previous abilities
         foreach (var key in prev.enables) {
             var ability = _abilityMap[key];
             --ability.ActiveCounter;
         }
+        slot.Implant = null;
         ImplantUneqiupped.Invoke(name, prev);
+    }
+
+    public void Install(string name, Implant implant) {
+        Uninstall(name);
+        var slot = SlotMap[name];
 
         // set implant in slot
         slot.Implant = implant;
 
         // enable new abilities
-        foreach (var key in prev.enables) {
+        foreach (var key in implant.enables) {
             var ability = _abilityMap[key];
             ++ability.ActiveCounter;
         }

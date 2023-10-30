@@ -8,6 +8,7 @@ public class SlideFromUp : MonoBehaviour
     #region Serialized
 
     public KeyCode toggleVisibilityKey;
+    public bool pauseGame;
 
     #endregion
 
@@ -16,6 +17,7 @@ public class SlideFromUp : MonoBehaviour
 
     void Awake() {
         transform.position = new(transform.position.x, Screen.height, transform.position.z);
+        _toggleVisible();
     }
 
     void Update()
@@ -33,7 +35,12 @@ public class SlideFromUp : MonoBehaviour
         var moveY = Screen.height;
         if (!_visible) moveY = 0;
 
-        LeanTween.moveY(gameObject, moveY, .2f).setOnComplete(() => _inProcess = false);
+        LeanTween.moveY(gameObject, moveY, .2f).setIgnoreTimeScale(true).setOnComplete(() => _inProcess = false);
         _visible = !_visible;
+
+        if (!pauseGame) return;
+        Time.timeScale = 1f;
+        if (_visible) Time.timeScale = 0f;
+
     }
 }

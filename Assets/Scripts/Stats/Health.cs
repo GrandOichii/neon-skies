@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
 
     public int initialValue;
     public int maxValue;
+    public bool immortal = false;
 
     #endregion
 
@@ -27,7 +28,7 @@ public class Health : MonoBehaviour
         set {
             _value = value;
             if (_value > MaxValue) _value = MaxValue;
-            if (_value <= 0) {
+            if (_value <= 0 && !immortal) {
                 _value = 0;
                 ReachedZero?.Invoke();
             }
@@ -39,6 +40,7 @@ public class Health : MonoBehaviour
     public int MaxValue {
         get => _maxValue;
         set {
+            var old = _maxValue;
             var diff = value - _maxValue;
             _maxValue = value;
             if (_value > _maxValue) _value = _maxValue;
@@ -46,7 +48,7 @@ public class Health : MonoBehaviour
                 Value += diff;
             }
 
-            MaxChanged?.Invoke(_value);
+            MaxChanged?.Invoke(_maxValue);
         }
     }
 
