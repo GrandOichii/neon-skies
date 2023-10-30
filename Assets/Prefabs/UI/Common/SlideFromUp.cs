@@ -17,7 +17,6 @@ public class SlideFromUp : MonoBehaviour
 
     void Awake() {
         transform.position = new(transform.position.x, Screen.height, transform.position.z);
-        _toggleVisible();
     }
 
     void Update()
