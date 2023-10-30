@@ -26,7 +26,7 @@ public class PlayerFire : MonoBehaviour
     public UnityEvent<Object> GunEquipped;
     public UnityEvent<int> TotalAmmoCountUpdated;
     public UnityEvent<int> MagazineAmmoCountUpdated;
-
+    public UnityEvent GunFired;
     #endregion
 
     private int _totalAmmoCount;
@@ -88,6 +88,7 @@ public class PlayerFire : MonoBehaviour
 
     void Update()
     {
+        // LeanTween.shake.
         switch (Gun.fireMode) {
         case FireMode.FullAuto:
             if (Input.GetKey(KeyCode.Mouse0)) {
@@ -124,6 +125,8 @@ public class PlayerFire : MonoBehaviour
         bullet.transform.Rotate(new Vector3(0, 0, Random.Range(-Deviation, Deviation)));
         Deviation += Gun.deviationPerBullet;
         --MagazineAmmoCount;
+
+        GunFired?.Invoke();
 
         StartCoroutine(_enableFire());
     }
