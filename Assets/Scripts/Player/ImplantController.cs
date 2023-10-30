@@ -39,28 +39,31 @@ public class ImplantController : MonoBehaviour
 
     public UnityEvent<string, Object> ImplantUneqiupped;
     public UnityEvent<string, Object> ImplantEquipped;
+    public UnityEvent SlotMapInitiated;
 
     #endregion
 
     private Dictionary<string, Ability> _abilityMap;
 
-    private Dictionary<string, ImplantSlotContainer> _slotMap;
+    public Dictionary<string, ImplantSlotContainer> SlotMap { get; private set; }
 
-    void Start() {
+    void Awake() {
         _abilityMap = new();
         foreach (var mapping in abilityMappings) {
             _abilityMap.Add(mapping.key, mapping.ability);
         }
 
-        _slotMap = new();
+        SlotMap = new();
         foreach (var slot in implantSlots) {
-            _slotMap.Add(slot.name, slot);
+            SlotMap.Add(slot.name, slot);
             Install(slot.name, slot.Implant);
         }
+
+        SlotMapInitiated.Invoke();
     }
 
     public void Install(string name, Implant implant) {
-        var slot = _slotMap[name];
+        var slot = SlotMap[name];
 
         var prev = slot.Implant;
 
