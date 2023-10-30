@@ -13,7 +13,6 @@ public class ImplantDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public Image imageDisplay;
     public TMP_Text nameDisplay;
-    public Implant initialImplant;
 
     #endregion
 
@@ -58,8 +57,4 @@ public class ImplantDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     #endregion
-
-    void Start() {
-        Implant = initialImplant;
-    }
 }

@@ -15,6 +15,8 @@ public class ImplantManager : MonoBehaviour
 
     public ImplantController implantController;
     public List<EquippedImplantDisplayMapping> displayMappings;
+    public GameObject implantGrid;
+    public GameObject implantDisplayTemplate;
 
     #endregion
 
@@ -46,10 +48,29 @@ public class ImplantManager : MonoBehaviour
         foreach (var v in implantController.SlotMap.Values) {
             if (!_equippedDisplayMapping.ContainsKey(v.name)) continue;
             _equippedDisplayMapping[v.name].Accepts = v.slot;
+            
+            // create equipped implants
+            if (v.Implant == null) continue;
+
+            var child = Instantiate(implantDisplayTemplate);
+            var id = child.GetComponent<ImplantDisplay>();
+            id.Implant = v.Implant;
+            id.SlotName = v.name;
+            child.transform.SetParent(_equippedDisplayMapping[v.name].displayHolder.transform);
         }
+    
+        foreach (var implant in implantController.implants) {
+            var child = Instantiate(implantDisplayTemplate);
+            child.GetComponent<ImplantDisplay>().Implant = implant;
+            child.transform.SetParent(implantGrid.transform);
+        }
+
+        // create implants
+        // implantController.implants
     }
 
     public void OnImplantUnequipped(string slotName) {
+        print("UNEQUIPPED " + slotName);
         implantController.Uninstall(slotName);
     }
 

@@ -32,6 +32,7 @@ public class ImplantController : MonoBehaviour
 
     public List<AbilityMapping> abilityMappings;
     public List<ImplantSlotContainer> implantSlots;
+    public List<Implant> implants;
 
     #endregion
     #region Events
@@ -70,6 +71,8 @@ public class ImplantController : MonoBehaviour
         if (prev == null) {
             return;
         }
+        print("UNINSTALL " + name);
+
         // disable previous abilities
         foreach (var key in prev.enables) {
             var ability = _abilityMap[key];
