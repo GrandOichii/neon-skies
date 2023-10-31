@@ -30,7 +30,6 @@ public class ImplantController : MonoBehaviour
 {
     #region Serialized
 
-    public List<AbilityMapping> abilityMappings;
     public List<ImplantSlotContainer> implantSlots;
     public List<Implant> implants;
 
@@ -44,15 +43,13 @@ public class ImplantController : MonoBehaviour
 
     #endregion
 
-    private Dictionary<string, Ability> _abilityMap;
-
+    private List<Ability> _abilities;    
     public Dictionary<string, ImplantSlotContainer> SlotMap { get; private set; }
 
     void Awake() {
-        _abilityMap = new();
-        foreach (var mapping in abilityMappings) {
-            _abilityMap.Add(mapping.key, mapping.ability);
-        }
+        _abilities = new();
+        foreach (var a in GetComponents<Ability>())
+            _abilities.Add(a);
 
         SlotMap = new();
         foreach (var slot in implantSlots) {
@@ -65,6 +62,7 @@ public class ImplantController : MonoBehaviour
     }
 
     public void Uninstall(string name) {
+
         var slot = SlotMap[name];
 
         var prev = slot.Implant;
@@ -73,10 +71,13 @@ public class ImplantController : MonoBehaviour
         }
         print("UNINSTALL " + name);
 
+        // getcomponents
+
         // disable previous abilities
-        foreach (var key in prev.enables) {
-            var ability = _abilityMap[key];
-            --ability.ActiveCounter;
+        foreach (var a in _abilities) {
+            if (!a.enabledBy.Contains(prev)) continue;
+
+            --a.ActiveCounter;
         }
         slot.Implant = null;
         ImplantUneqiupped.Invoke(name, prev);
@@ -90,9 +91,10 @@ public class ImplantController : MonoBehaviour
         slot.Implant = implant;
 
         // enable new abilities
-        foreach (var key in implant.enables) {
-            var ability = _abilityMap[key];
-            ++ability.ActiveCounter;
+        foreach (var a in _abilities) {
+            if (!a.enabledBy.Contains(implant)) continue;
+
+            ++a.ActiveCounter;
         }
         ImplantEquipped.Invoke(name, implant);
 

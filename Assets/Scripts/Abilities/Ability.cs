@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,12 @@ using UnityEngine.Events;
 // }
 
 public class Ability : MonoBehaviour {
+    #region Serialized
+
+    public List<Implant> enabledBy;
+
+    #endregion
+    
     #region Events
 
     public UnityEvent activated;

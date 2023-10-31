@@ -19,6 +19,4 @@ public class Implant : ScriptableObject
     [TextArea]
     public string description;
     public ImplantSlot slot;
-    public List<string> enables;
-
 }

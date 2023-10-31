@@ -2771,6 +2771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769d7695a3422b3438f48a9d1bc9ebf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledBy:
+  - {fileID: 11400000, guid: b7a5fefc10aaeb84da42a614a1f48b68, type: 2}
   activated:
     m_PersistentCalls:
       m_Calls: []
@@ -2840,6 +2842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d01487260f41f54f9157ad20e008de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledBy:
+  - {fileID: 11400000, guid: 31eb96a77d63e15448a135ff638a692b, type: 2}
   activated:
     m_PersistentCalls:
       m_Calls: []
@@ -2866,17 +2870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761ea0838c7d8ce4a8ad141e11d84e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityMappings:
-  - key: dash
-    ability: {fileID: 1015195587}
-  - key: heal
-    ability: {fileID: 1015195589}
-  - key: max-health-increase
-    ability: {fileID: 1015195591}
-  - key: increase-heat-reduction
-    ability: {fileID: 1015195593}
-  - key: time-scale-mod
-    ability: {fileID: 1015195594}
   implantSlots:
   - name: Legs
     slot: 4
@@ -2914,6 +2907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa56a089f992824e986eab395b08bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledBy:
+  - {fileID: 11400000, guid: d0e75d572617d8a48b8338aade0f728c, type: 2}
   activated:
     m_PersistentCalls:
       m_Calls: []
@@ -2991,6 +2986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123135f18654d55429352c6bd014f4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledBy:
+  - {fileID: 11400000, guid: 7f132f8fe302ffb4dabf0607d47a1f1d, type: 2}
   activated:
     m_PersistentCalls:
       m_Calls: []
@@ -3010,6 +3007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361c40260f7b9db42989ec83c3915182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledBy:
+  - {fileID: 11400000, guid: 8bc74fd98dfdda24787969a1554496d0, type: 2}
   activated:
     m_PersistentCalls:
       m_Calls: []
