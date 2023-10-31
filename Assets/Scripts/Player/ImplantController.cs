@@ -43,13 +43,17 @@ public class ImplantController : MonoBehaviour
 
     #endregion
 
-    private List<Ability> _abilities;    
+    private Dictionary<Implant, List<Ability>> _activationMap;
     public Dictionary<string, ImplantSlotContainer> SlotMap { get; private set; }
 
     void Awake() {
-        _abilities = new();
-        foreach (var a in GetComponents<Ability>())
-            _abilities.Add(a);
+        _activationMap = new();
+        foreach (var a in GetComponents<Ability>()) {
+            foreach (var i in a.enabledBy) {
+                if (!_activationMap.ContainsKey(i)) _activationMap.Add(i, new());
+                _activationMap[i].Add(a);
+            }
+        }
 
         SlotMap = new();
         foreach (var slot in implantSlots) {
@@ -74,11 +78,10 @@ public class ImplantController : MonoBehaviour
         // getcomponents
 
         // disable previous abilities
-        foreach (var a in _abilities) {
-            if (!a.enabledBy.Contains(prev)) continue;
-
+        foreach (var a in _activationMap[prev]) {
             --a.ActiveCounter;
         }
+
         slot.Implant = null;
         ImplantUneqiupped.Invoke(name, prev);
     }
@@ -91,11 +94,10 @@ public class ImplantController : MonoBehaviour
         slot.Implant = implant;
 
         // enable new abilities
-        foreach (var a in _abilities) {
-            if (!a.enabledBy.Contains(implant)) continue;
-
+        foreach (var a in _activationMap[implant]) {
             ++a.ActiveCounter;
         }
+
         ImplantEquipped.Invoke(name, implant);
 
         // gameObject.AddComponent()
