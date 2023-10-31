@@ -73,7 +73,6 @@ public class ImplantController : MonoBehaviour
         if (prev == null) {
             return;
         }
-        print("UNINSTALL " + name);
 
         // getcomponents
 

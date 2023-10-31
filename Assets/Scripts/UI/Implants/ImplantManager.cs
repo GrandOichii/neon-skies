@@ -70,7 +70,6 @@ public class ImplantManager : MonoBehaviour
     }
 
     public void OnImplantUnequipped(string slotName) {
-        print("UNEQUIPPED " + slotName);
         implantController.Uninstall(slotName);
     }
 

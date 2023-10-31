@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemySpawnTable0
   m_EditorClassIdentifier: 
   map:
-  - enemy: {fileID: 722476066227356638, guid: 0837f7907fed3cd4aa87a2514574a285, type: 3}
+  - enemy: {fileID: 8708745486291415737, guid: c71cb065f1dbfef49b40a5211b6cd563, type: 3}
     chance: 10
