@@ -9,10 +9,13 @@ public class Shake : MonoBehaviour
 {
     #region Serialized
 
-    public float duration;
-    public float intensivity;
+    public float playerHitDuration;
+    public float playerHitIntensivity;
+    public float playerFiredDuration;
+    public float playerFiredIntensivity;
 
     #endregion
+
     private CinemachineVirtualCamera _vCamera;
     private CinemachineBasicMultiChannelPerlin _cbmcp;
     private float _timer;
@@ -22,11 +25,17 @@ public class Shake : MonoBehaviour
         _stop();
     }
 
-    public void Do() {
+    public void PlayerGotHit() {
         _cbmcp = _vCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _cbmcp.m_AmplitudeGain = intensivity;
-        _timer = duration;
+        _cbmcp.m_AmplitudeGain = playerHitIntensivity;
+        _timer = playerHitDuration;
 
+    }
+
+    public void PlayerFired() {
+        _cbmcp = _vCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _cbmcp.m_AmplitudeGain = playerFiredIntensivity;
+        _timer = playerFiredDuration;
     }
 
     private void _stop() {

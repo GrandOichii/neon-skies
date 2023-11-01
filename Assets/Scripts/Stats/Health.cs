@@ -18,6 +18,7 @@ public class Health : MonoBehaviour
 
     public UnityEvent<int> Changed;
     public UnityEvent<int> MaxChanged;
+    public UnityEvent<int> LostHealth;
     public UnityEvent ReachedZero;
 
     #endregion
@@ -26,13 +27,16 @@ public class Health : MonoBehaviour
     public int Value {
         get => _value;
         set {
+            var prev = _value;
             _value = value;
             if (_value > MaxValue) _value = MaxValue;
             if (_value <= 0 && !immortal) {
                 _value = 0;
                 ReachedZero?.Invoke();
             }
+
             Changed?.Invoke(_value);
+            if (prev > _value) LostHealth?.Invoke(prev - _value);
         }
     }
 
