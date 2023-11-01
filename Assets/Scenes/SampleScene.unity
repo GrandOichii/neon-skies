@@ -2663,7 +2663,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isPlayer: 1
-  startingGun: {fileID: 11400000, guid: 278477bf933238c45b556225cf43ea21, type: 2}
+  startingGun: {fileID: 11400000, guid: aecc340dfb67e1b458253b9d651d14e4, type: 2}
   startingAmmoCount: 60
   muzzlePoint: {fileID: 1918608222}
   reloadMeter: {fileID: 1568680146}

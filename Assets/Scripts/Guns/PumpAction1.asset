@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f355d99a963ea04f9572a54d0bdece6, type: 3}
+  m_Name: PumpAction1
+  m_EditorClassIdentifier: 
+  name: PumpAction1
+  magazineSize: 5
+  bulletTemplate: {fileID: 7933578759947254077, guid: 69fc2f095ac45654cb7887826fbff091, type: 3}
+  maxDeviation: 30
+  deviationDecreaseInterval: 0.1
+  deviationPerBullet: 3
+  fireMode: 2
+  fireInterval: 0.3
+  ejectTime: 0
+  reloadTime: 0.6
+  hotReloadIntervalStart: 0.1
+  hotReloadIntervalEnd: 0.3

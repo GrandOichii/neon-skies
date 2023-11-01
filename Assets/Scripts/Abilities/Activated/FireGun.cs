@@ -145,6 +145,15 @@ public class FireGun : ActivatedAbility
     private bool _loaded = true;
     private bool _canAdvanceReload = true;
     void _advanceReload() {
+        if (_gun.fireMode == FireMode.PumpAction) {
+            // is reloading
+            if (_magazineAmmoCount == _gun.magazineSize || TotalAmmoCount <= 0) {
+                return;
+            }
+            reloadMeter.Reload();
+            return;
+        }
+
         if (!_canAdvanceReload) return;
 
         if (_loaded) {
@@ -158,7 +167,6 @@ public class FireGun : ActivatedAbility
             return;
         }
 
-        // loaded
         reloadMeter.Reload();
     }
 
@@ -168,6 +176,12 @@ public class FireGun : ActivatedAbility
     }
 
     public void OnReloaded(ReloadType rt) {
+        if (_gun.fireMode == FireMode.PumpAction) {
+            print("RELOADED");
+            ++MagazineAmmoCount;
+            --TotalAmmoCount;
+            return;
+        }
         _loaded = true;
         MagazineAmmoCount = System.Math.Min(Gun.magazineSize, TotalAmmoCount);
         TotalAmmoCount -= MagazineAmmoCount;

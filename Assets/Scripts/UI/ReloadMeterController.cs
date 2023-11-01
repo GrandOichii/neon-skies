@@ -80,13 +80,14 @@ public class ReloadMeterController : MonoBehaviour
         Current = gun as Gun;
     }
 
-    public void Start() {
-        _hide();
-    }
-    public void Eject() {
+    void Start() {
         mainBar.color = BgColor;
         progressBar.color = FgColor;
+        
+        _hide();
+    }
 
+    public void Eject() {
         mainBar.gameObject.SetActive(true);
         progressBar.gameObject.SetActive(true);
         
@@ -117,7 +118,6 @@ public class ReloadMeterController : MonoBehaviour
         mainBar.gameObject.SetActive(true);
         progressBar.gameObject.SetActive(true);
 
-        // TODO enable hot reload
         var height = progressBar.rectTransform.rect.height;
         progressBar.transform.localPosition = new(progressBar.transform.localPosition.x, -height, progressBar.transform.localPosition.z);
         // progressBar.transform.localPosition -= Vector3.down * height;
@@ -133,5 +133,8 @@ public class ReloadMeterController : MonoBehaviour
         _hide();
         Reloaded.Invoke(ReloadType);
         ReloadType = ReloadType.NONE;
+        
+        mainBar.color = BgColor;
+        progressBar.color = FgColor;
     }
 }
