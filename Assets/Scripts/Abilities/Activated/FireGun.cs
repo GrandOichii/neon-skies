@@ -9,14 +9,14 @@ public enum FireMode {
     PumpAction
 }
 
-public class PlayerFire : MonoBehaviour
+public class FireGun : ActivatedAbility
 {
     #region Serialized
 
+    public bool isPlayer = false;
     public Gun startingGun;
     public int startingAmmoCount;
     public GameObject muzzlePoint;
-    public GameObject sprite;
     public ReloadMeterController reloadMeter;
 
     #endregion
@@ -88,6 +88,8 @@ public class PlayerFire : MonoBehaviour
 
     void Update()
     {
+        if (!isPlayer) return;
+
         // LeanTween.shake.
         switch (Gun.fireMode) {
         case FireMode.FullAuto:
@@ -113,7 +115,7 @@ public class PlayerFire : MonoBehaviour
         }
     }
 
-    void Fire() {
+    public void Fire() {
         if (!_canFire) return;
 
         if (MagazineAmmoCount == 0) {
@@ -121,7 +123,8 @@ public class PlayerFire : MonoBehaviour
         }
 
         _canFire = false;
-        var bullet = Instantiate(Gun.bulletTemplate, muzzlePoint.transform.position, sprite.transform.rotation);
+        var bullet = Instantiate(Gun.bulletTemplate, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
+        bullet.GetComponent<BulletController>().SetOriginator(gameObject);
         bullet.transform.Rotate(new Vector3(0, 0, Random.Range(-Deviation, Deviation)));
         Deviation += Gun.deviationPerBullet;
         --MagazineAmmoCount;
@@ -134,7 +137,10 @@ public class PlayerFire : MonoBehaviour
     IEnumerator _enableFire() {
         yield return new WaitForSeconds(Gun.fireInterval);
         _canFire = true;
+        base.EndAbility();
     }
+
+    #region Reloading
 
     private bool _loaded = true;
     private bool _canAdvanceReload = true;
@@ -165,6 +171,13 @@ public class PlayerFire : MonoBehaviour
         _loaded = true;
         MagazineAmmoCount = System.Math.Min(Gun.magazineSize, TotalAmmoCount);
         TotalAmmoCount -= MagazineAmmoCount;
+    }
+
+    #endregion
+
+    public override void StartAbility() {
+        base.StartAbility();
+        Fire();
     }
 
 }

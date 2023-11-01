@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3477713524393628685}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.525, z: 0}
+  m_LocalPosition: {x: 0, y: 0.514, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -290,6 +290,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7653233811963072613, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1686843750168666622}
+    - targetCorrespondingSourceObject: {fileID: 7653233811963072613, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8547245359813772358}
   m_SourcePrefab: {fileID: 100100000, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
 --- !u!4 &313605862609283265 stripped
 Transform:
@@ -328,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followRange: 50
+  revertToOnLost: lookForPlayer
 --- !u!114 &1686843750168666622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,3 +346,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointer: {fileID: 5042065763787631005}
   pointerOrigin: {fileID: 3477713524393628685}
+--- !u!114 &8547245359813772358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708745486291415737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685e78c034a0f924da9387ec211c72c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabledBy: []
+  activated:
+    m_PersistentCalls:
+      m_Calls: []
+  deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  AbilityStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  AbilityEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  isPlayer: 0
+  startingGun: {fileID: 11400000, guid: 278477bf933238c45b556225cf43ea21, type: 2}
+  startingAmmoCount: 200
+  muzzlePoint: {fileID: 3477713524393628685}
+  reloadMeter: {fileID: 0}
+  GunEquipped:
+    m_PersistentCalls:
+      m_Calls: []
+  TotalAmmoCountUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  MagazineAmmoCountUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  GunFired:
+    m_PersistentCalls:
+      m_Calls: []

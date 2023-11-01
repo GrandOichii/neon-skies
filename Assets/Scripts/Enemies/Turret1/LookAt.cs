@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FireGun))]
 public class LookAt : EnemyBehaviour
 {
     #region Serialized
 
     public float followRange;
+    public string revertToOnLost;
 
     #endregion
+
     GameObject _lookAt;
     public override void EBStart()
     {
@@ -21,10 +24,15 @@ public class LookAt : EnemyBehaviour
         base.EBUpdate();
 
         var pos = _lookAt.transform.position;
-        print(pos);
         
         _controller.LookAt(pos);
-        // TODO check that still looking at player
-        _controller.FireRay(followRange);
+
+        var hit = _controller.FireRay(followRange);
+        if (hit.collider == null || !hit.collider.CompareTag("player")) {
+            // TODO lost track of player
+            _controller.Current = revertToOnLost;
+        }
+
+        GetComponent<FireGun>().Fire();
     }
 }

@@ -16,9 +16,20 @@ public class BulletController : MonoBehaviour
 
     #endregion
     // Start is called before the first frame update
+
     void Start()
     {
         Invoke(nameof(DestroySelf), dissapearAfter);
+    }
+
+    public void SetOriginator(GameObject originator) {
+        Collider2D[] playerColliders = originator.GetComponents<Collider2D>();
+        var bulletCollider = GetComponent<Collider2D>();
+
+        // Make the bullet ignore all of the player's colliders
+        foreach (Collider2D c in playerColliders) {
+            Physics2D.IgnoreCollision(bulletCollider, c, true);
+        }
     }
 
     void DestroySelf() {
@@ -37,9 +48,9 @@ public class BulletController : MonoBehaviour
         //     return;
         // }
 
+        print("HIT " + collider.gameObject.name);
         if (collider.TryGetComponent(out Health health)) {
             health.Value -= damage;
-
         }
 
         Destroy(gameObject);
