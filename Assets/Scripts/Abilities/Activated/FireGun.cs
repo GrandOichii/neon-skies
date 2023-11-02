@@ -123,9 +123,15 @@ public class FireGun : ActivatedAbility
         }
 
         _canFire = false;
-        var bullet = Instantiate(Gun.bulletTemplate, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
-        bullet.GetComponent<BulletController>().SetOriginator(gameObject);
-        bullet.transform.Rotate(new Vector3(0, 0, Random.Range(-Deviation, Deviation)));
+        var pelletCount = Random.Range(_gun.minBulletsPerShot, _gun.maxBulletsPerShot + 1);
+
+        var dev = Random.Range(-Deviation, Deviation);
+        for (int i = 0; i < pelletCount; i++) {
+            var bullet = Instantiate(Gun.bulletTemplate, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
+            bullet.GetComponent<BulletController>().SetOriginator(gameObject);
+            bullet.transform.Rotate(new Vector3(0, 0, dev + Random.Range(-_gun.perShotDeviation, _gun.perShotDeviation)));
+        }
+
         Deviation += Gun.deviationPerBullet;
         --MagazineAmmoCount;
 

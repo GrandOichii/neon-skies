@@ -24,3 +24,6 @@ MonoBehaviour:
   reloadTime: 0.6
   hotReloadIntervalStart: 0.1
   hotReloadIntervalEnd: 0.3
+  minBulletsPerShot: 3
+  maxBulletsPerShot: 4
+  perShotDeviation: 20
