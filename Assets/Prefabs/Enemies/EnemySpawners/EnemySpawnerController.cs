@@ -10,6 +10,12 @@ public class EnemySpawnerController : MonoBehaviour
 
     #endregion
 
+    void Awake() {
+        if (!TryGetComponent<SpriteRenderer>(out var indicator)) return;
+
+        indicator.enabled = false;
+    }
+
     void Start()
     {
         var template = spawnTable.Get();

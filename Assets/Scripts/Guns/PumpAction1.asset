@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PumpAction1
   m_EditorClassIdentifier: 
   name: PumpAction1
+  description: 
   magazineSize: 5
   bulletTemplate: {fileID: 7933578759947254077, guid: 69fc2f095ac45654cb7887826fbff091, type: 3}
   maxDeviation: 30
@@ -26,4 +27,4 @@ MonoBehaviour:
   hotReloadIntervalEnd: 0.3
   minBulletsPerShot: 3
   maxBulletsPerShot: 4
-  perShotDeviation: 20
+  perShotDeviation: 30

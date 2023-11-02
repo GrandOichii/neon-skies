@@ -8,6 +8,8 @@ public class Gun : ScriptableObject
     #region Serialized
 
     public new string name;
+    [TextArea]
+    public string description;
     public int magazineSize;
     public GameObject bulletTemplate;
     public float maxDeviation;
