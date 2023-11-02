@@ -23,7 +23,7 @@ public class ImplantDisplaySlot : MonoBehaviour, IDropHandler
     #endregion
     
     #nullable enable
-    private ImplantDisplay? _current;
+    public  ImplantDisplay? Current { get; set; }
     #nullable disable
 
     private string _slotName;
@@ -44,16 +44,16 @@ public class ImplantDisplaySlot : MonoBehaviour, IDropHandler
         ImplantDisplay display = dropped.GetComponent<ImplantDisplay>();
         if (display.Implant.slot != Accepts) return;
 
-        if (_current != null) {
+        if (Current != null) {
             // unequipping
-            _current.transform.SetParent(display.DragParent);
+            Current.transform.SetParent(display.DragParent);
             display.SlotName = "";
             UnequippedImplant.Invoke(SlotName);
-            _current = null;
+            Current = null;
         }
         
         display.DragParent = displayHolder.transform;
-        _current = display;
+        Current = display;
         
         display.SlotName = SlotName;
         EquippedImplant.Invoke(SlotName, display.Implant);

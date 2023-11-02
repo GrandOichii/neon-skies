@@ -56,6 +56,7 @@ public class ImplantManager : MonoBehaviour
             var id = child.GetComponent<ImplantDisplay>();
             id.Implant = v.Implant;
             id.SlotName = v.name;
+            _equippedDisplayMapping[v.name].Current = id;
             child.transform.SetParent(_equippedDisplayMapping[v.name].displayHolder.transform);
         }
     
@@ -63,6 +64,7 @@ public class ImplantManager : MonoBehaviour
             var child = Instantiate(implantDisplayTemplate);
             child.GetComponent<ImplantDisplay>().Implant = implant;
             child.transform.SetParent(implantGrid.transform);
+            
         }
 
         // create implants

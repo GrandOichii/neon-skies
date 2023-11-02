@@ -49,11 +49,10 @@ public class DeviationDisplay : StaticAbility
 
         float angle = _fg.Deviation;
         float rayRange = lineLength;
-        float halfFOV = angle / 2.0f;
         float coneDirection = 180;
 
-        Quaternion upRayRotation = Quaternion.AngleAxis(-halfFOV + coneDirection, Vector3.forward);
-        Quaternion downRayRotation = Quaternion.AngleAxis(halfFOV + coneDirection, Vector3.forward);
+        Quaternion upRayRotation = Quaternion.AngleAxis(-angle + coneDirection, Vector3.forward);
+        Quaternion downRayRotation = Quaternion.AngleAxis(angle + coneDirection, Vector3.forward);
 
         Vector3 upRayDirection = upRayRotation * line.transform.up * rayRange;
         Vector3 downRayDirection = downRayRotation * line.transform.up * rayRange;

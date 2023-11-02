@@ -3486,7 +3486,7 @@ MonoBehaviour:
   deactivated:
     m_PersistentCalls:
       m_Calls: []
-  lineLength: 5
+  lineLength: 20
   line: {fileID: 1808327813}
 --- !u!1001 &1058198964
 PrefabInstance:
