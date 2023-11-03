@@ -267,9 +267,37 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c466ba68c999af8409c04c5d6688b7a7, type: 3}
+    - target: {fileID: 6043815595917201486, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      propertyPath: soundHeard.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043815595917201486, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      propertyPath: soundHeard.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3132613818836534158}
+    - target: {fileID: 6043815595917201486, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      propertyPath: soundHeard.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043815595917201486, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      propertyPath: soundHeard.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHeardSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043815595917201486, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      propertyPath: soundHeard.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GroundedLookForPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043815595917201486, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      propertyPath: soundHeard.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7653233811963072613, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
       propertyPath: m_Name
       value: Turret1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8980977348060427076, guid: bd742ba9cb16be74997fca60e1032dcc, type: 3}
+      propertyPath: m_Radius
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -318,6 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 50
   onFound: lookAt
+  soundReactWait: 2
+  soundReactRotationSpeed: 0.03
 --- !u!114 &4592261193493545314
 MonoBehaviour:
   m_ObjectHideFlags: 0

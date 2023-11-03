@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     public string initial;
     public List<StateBehaviourMapping> behaviourMappings;
+    public LayerMask raycastIgnore;
 
     #endregion
 
@@ -71,7 +72,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public RaycastHit2D FireRay(float range) {
-        var hit = Physics2D.Raycast(transform.position, transform.up, range);
+        var hit = Physics2D.Raycast(transform.position, transform.up, range, ~raycastIgnore);
         // Debug.DrawLine(transform.position, hit.point);
         var point = hit.point;
         if (hit.collider == null)
