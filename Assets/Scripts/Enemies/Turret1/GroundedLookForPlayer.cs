@@ -17,10 +17,24 @@ public class GroundedLookForPlayer : EnemyBehaviour
 
     private Vector3? _target;
 
+    IEnumerator _e;
+
     public override void EBStart()
     {
         base.EBStart();
-        StartCoroutine(_watch());
+        _e = _watch();
+        StartCoroutine(_e);
+
+        _target = null;
+        _soundReactLeft = 0;
+        if (!_controller.Contains("enemy")) return;
+        _target = _controller.Get<Collider2D>("enemy").transform.position;
+    }
+
+    public override void EBEnd()
+    {
+        base.EBEnd();
+        StopCoroutine(_e);
     }
 
 
